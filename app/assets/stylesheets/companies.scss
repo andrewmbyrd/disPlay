@@ -1,0 +1,21 @@
+// Place all the styles related to the companies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.company-name{
+  text-align: center;
+  height: 33%;
+}
+
+.company-name:hover{
+  cursor: pointer;
+}
+
+.jumbotron{
+  text-align: center;
+}
+
+.row{
+  text-align: center;
+  margin: 10px 0;
+}

@@ -1,0 +1,12 @@
+
+<h1 class="jumbotron"> Select a Company </h1>
+<div class="container-fluid">
+  <div class="row">
+    <% @companies.each do |company| %>
+      <div class="col-md-4">
+        <h2 class="company-name"> <%= link_to company.name, company %></h2>
+      </div>
+
+    <% end %>
+  </div>
+</div>

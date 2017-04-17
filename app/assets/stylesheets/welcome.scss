@@ -1,0 +1,28 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.navigation{
+  margin: 15px auto;
+  width: 90%;
+  border-bottom: 1px solid gray;
+  text-align: right;
+
+}
+.main{
+  text-align: center;
+}
+
+.selling-points{
+  height: 400px;
+}
+
+.point{
+  text-align: center;
+  height: 100%;
+}
+
+
+footer{
+  position: absolute;
+  bottom: 0px;
+}
