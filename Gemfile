@@ -20,6 +20,8 @@ end
 gem 'bootstrap-sass'
 #handle user authentication
 gem 'devise'
+#get user profile pictures from gravatar
+gem 'gravtastic'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

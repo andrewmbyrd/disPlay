@@ -16,3 +16,18 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.sign-in{
+  position: relative;
+  height: 70px;
+  text-align: right;
+  margin: 2px 5px 0 5px;
+
+}
+
+.home {
+  float: left;
+}
+.sign-in p{
+  display: inline;
+}

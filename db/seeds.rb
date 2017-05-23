@@ -14,6 +14,9 @@ def seedCompanies
   Company.create!(name: "Atari")
   Company.create!(name: "SNK")
   Company.create!(name: "Phillips")
+  Company.create!(name: "Valve")
+  Company.create!(name: "EA")
+  Company.create!(name: "Ubisoft")
 end
 
 def seedSony

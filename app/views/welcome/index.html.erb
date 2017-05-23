@@ -1,11 +1,9 @@
-<div class="navigation">
-    <%= link_to "Sign In", welcome_contact_path %>
-</div>
-
 <div class="jumbotron main">
   <h1> Welcome to disPlay. </h1>
   <h3> Show off your game collection for the world to see </h3>
-  <%= link_to "Start Building Your Collection", companies_path %>
+  <% if current_user %>
+    <%= link_to "Start Building Your Collection", companies_path %>
+  <% end %>
 </div>
 
 <div class="selling-points">
@@ -14,7 +12,7 @@
       showing off your personal library of games.
     </h3>
   </br>
-  <img src="/home/byrd/Documents/Bloc/code/disPlay/app/assets/images">
+  <%= image_tag "library.jpg" %>
 
   </div>
   <div class="point col-md-4">
