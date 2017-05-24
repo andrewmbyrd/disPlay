@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417203447) do
+ActiveRecord::Schema.define(version: 20170524204929) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "game_purchases", force: :cascade do |t|
+    t.integer  "library_id"
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_game_purchases_on_game_id"
+    t.index ["library_id"], name: "index_game_purchases_on_library_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -26,6 +35,41 @@ ActiveRecord::Schema.define(version: 20170417203447) do
     t.datetime "updated_at",   null: false
     t.integer  "system_id"
     t.index ["system_id"], name: "index_games_on_system_id"
+  end
+
+  create_table "libraries", force: :cascade do |t|
+    t.integer  "style"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_libraries_on_user_id"
+  end
+
+  create_table "publications", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_publications_on_company_id"
+    t.index ["game_id"], name: "index_publications_on_game_id"
+  end
+
+  create_table "releases", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "system_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_releases_on_game_id"
+    t.index ["system_id"], name: "index_releases_on_system_id"
+  end
+
+  create_table "system_purchases", force: :cascade do |t|
+    t.integer  "library_id"
+    t.integer  "system_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["library_id"], name: "index_system_purchases_on_library_id"
+    t.index ["system_id"], name: "index_system_purchases_on_system_id"
   end
 
   create_table "systems", force: :cascade do |t|

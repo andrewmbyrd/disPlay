@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Style:</strong>
+  <%= @library.style %>
+</p>
+
+<% if @library.games.empty? && @library.systems.empty? %>
+  <p> Looks like your library is empty! </p>
+<% else %>
+  <%= @library.systems.each do |system| %>
+    <div>
+      <%= system.name %>
+      <%= system.release_year %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to "Add Some Games", companies_path, class: "btn btn-success" %>
+<%= link_to 'Edit', edit_library_path(@library) %> |
+<%= link_to 'Back', libraries_path %>

@@ -1,5 +1,6 @@
 <% @company.systems.each do |system|%>
   <div class="row">
     <%= link_to system.name, system %>
+    <%= button_to "Add to Library", libraries_add_system_path(system), method: :post %>
   </div>
 <% end %>
