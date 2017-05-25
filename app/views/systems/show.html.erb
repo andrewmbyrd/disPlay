@@ -1,5 +1,7 @@
+<%= link_to "Add to Library", system_system_purchases_path(@system), method: :post, class: 'btn btn-success' %>
+
 <% @system.games.each do |game|%>
   <div class="col-md-1">
-    <%= game.title %>
+    <%= link_to game.title, system_game_path(@system, game)%>
   </div>
 <% end %>
