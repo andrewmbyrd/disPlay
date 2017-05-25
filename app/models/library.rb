@@ -5,8 +5,9 @@ class Library < ApplicationRecord
 
   has_many :games, through: :game_purchases
   has_many :systems, through: :system_purchases
-  
-  before_save { self.style ||= :games }
 
-  enum style: [:games, :system, :company]
+  before_save { self.style ||= :Games }
+
+  STYLE = [:Games, :Systems]
+  enum style: [:Games, :Systems]
 end

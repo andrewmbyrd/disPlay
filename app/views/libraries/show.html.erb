@@ -1,23 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Style:</strong>
-  <%= @library.style %>
-</p>
+<%= form_for @library do |f| %>
+  <%= f.label :style %>
+  <%= f.select(:style, Library::STYLE) %>
+  <%= f.submit "OK" %>
+<% end %>
 
 <% if @library.games.empty? && @library.systems.empty? %>
   <p> Looks like your library is empty! </p>
 <% else %>
-  <% @library.systems.each do |system| %>
-    <div>
-      <%= system.name %>
-      <%= system.release_year %>
-    </div>
-  <% end %>
-  <% @library.games.each do |game| %>
-    <div>
-      <%= game.title %>
-    </div>
+  <% if @library.Games? %>
+    <% @library.games.each do |game| %>
+      <div>
+        <%= game.title %>
+      </div>
+    <% end %>
+  <% else %>
+    <% @library.systems.each do |system| %>
+      <div>
+        <%= system.name %>
+        <ul>
+          <% system.games.where(id: @library.games.pluck(:id)).each do |game| %>
+            <li><%= game.title %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
 
