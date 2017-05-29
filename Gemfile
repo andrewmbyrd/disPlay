@@ -16,6 +16,9 @@ end
  group :development do
    gem 'sqlite3'
  end
+
+#use this to create seed video game data
+gem 'giant-bomber', '~> 0.0.3'
 #use this to import the bootstrap css library
 gem 'bootstrap-sass'
 #handle user authentication

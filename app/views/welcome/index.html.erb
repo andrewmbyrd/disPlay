@@ -3,6 +3,8 @@
   <h3> Show off your game collection for the world to see </h3>
   <% if current_user %>
     <%= link_to "Start Building Your Collection", companies_path %>
+  <% else %>
+    <p><%= link_to "Sign In", new_user_session_path %> to get started</p>
   <% end %>
 </div>
 
