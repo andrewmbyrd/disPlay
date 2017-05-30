@@ -1,9 +1,10 @@
-<%= link_to "Add to Library", system_system_purchases_path(@system), method: :post, class: 'btn btn-success' %>
-<%= image_tag @system.img_url %>
-<p><%= @system.description %></p>
+<div class="system-info">
+  <%= link_to "Add the #{@system.name} to Your Library", system_system_purchases_path(@system), method: :post, class: 'btn btn-success pull-right' %>
+  <%= image_tag @system.img_url, class: "system-image" %>
+  <p class="system-details"><%= @system.description %></p>
+</div>
 <% @system.games.each do |game|%>
-  <div class="col-md-4">
-    <%= link_to game.title, system_game_path(@system, game)%>
-    <%= image_tag game.img_url %>
+  <div class="col-md-4 box-art">
+    <%= link_to (image_tag game.img_url, class: 'game-thumbnail'), system_game_path(@system, game)%>
   </div>
 <% end %>

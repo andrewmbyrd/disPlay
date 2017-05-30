@@ -17,7 +17,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.sign-in{
+.nav{
   position: relative;
   height: 70px;
   text-align: right;
@@ -27,7 +27,35 @@
 
 .home {
   float: left;
+  height: 100%;
+}
+
+.nav-systems {
+  float: left;
+  vertical-align: middle;
+  margin: 22px 10px;
+}
+
+.nav-companies {
+  float: left;
+  vertical-align: middle;
+  margin: 22px 10px;
+}
+
+.nav-social {
+  float: left;
+  vertical-align: middle;
+  margin: 22px 10px;
+}
+
+.nav-home{
+  height: 100%;
+  width: auto;
 }
 .sign-in p{
   display: inline;
+}
+
+body{
+  background: gray url('/assets/background.jpg');
 }

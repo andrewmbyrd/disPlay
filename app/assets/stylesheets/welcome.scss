@@ -10,10 +10,13 @@
 
 .main{
   text-align: center;
+  background: blue url('/assets/jumbotron.png');
+  background-size: 100% 100%;
+  height: 40%;
 }
 
 .selling-points{
-  height: 400px;
+  height: 620px;
 }
 
 .point{
@@ -21,6 +24,10 @@
   height: 100%;
 }
 
+.selling-point{
+  width: 65%;
+  height: 70%;
+}
 footer{
   position: absolute;
   bottom: 0px;
