@@ -1,2 +1,6 @@
-<%= link_to "Add to Library", system_game_game_purchases_path(@system, @game), method: :post, class: 'btn btn-success' %>
-<%= @game.title %>
+<%= link_to "Add to Library", system_game_game_purchases_path(@system, @game), method: :post, class: 'btn btn-success pull-right' %>
+<div class="game-display">
+  <%= image_tag @game.img_url, class: 'col-md-2' %>
+  <p class='genre'>Genre:<%= @game.genre %></p>
+  <p class="game-description"><%= @game.description %></p>
+</div>
