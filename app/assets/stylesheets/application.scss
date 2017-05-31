@@ -19,9 +19,8 @@
 
 .nav{
   position: relative;
-  height: 70px;
-  text-align: right;
-  margin: 2px 5px 0 5px;
+  height: 5em;
+  background: rgba(10,40, 200, 0.2);
 
 }
 
@@ -30,30 +29,42 @@
   height: 100%;
 }
 
-.nav-systems {
+.nav-games {
   float: left;
   vertical-align: middle;
-  margin: 22px 10px;
+  padding: 2em 1em;
+  height: 100%;
 }
 
-.nav-companies {
-  float: left;
-  vertical-align: middle;
-  margin: 22px 10px;
+.nav-games:hover {
+  cursor: pointer;
+  background: white;
+  color: blue;
 }
 
 .nav-social {
   float: left;
   vertical-align: middle;
-  margin: 22px 10px;
+  padding: 2em 1em;
+  height: 100%;
+}
+
+.nav-social:hover {
+  cursor: pointer;
+  background: white;
+  color: blue;
 }
 
 .nav-home{
   height: 100%;
   width: auto;
 }
-.sign-in p{
-  display: inline;
+.sign-in-status{
+  padding: 2em 1em  1.5em 1em;
+}
+
+.sign-in-status:hover{
+  background: white;
 }
 
 body{

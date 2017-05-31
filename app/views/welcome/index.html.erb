@@ -1,11 +1,13 @@
 <div class="jumbotron main">
-  <h1> Welcome to disPlay. </h1>
-  <h3> Every game. Every platform. One location. </h3>
-  <% if current_user %>
-    <%= link_to "Start Building Your Collection", companies_path %>
-  <% else %>
-    <p><%= link_to "Sign In", new_user_session_path %> to get started</p>
-  <% end %>
+  <div class="jumbo-content">
+    <h1> Welcome to disPlay. </h1>
+    <h3> Every game. Every platform. One location. </h3>
+    <% if current_user %>
+      <p><%= link_to "Start Building Your Collection", companies_path %></p>
+    <% else %>
+      <p><%= link_to "Sign In", new_user_session_path %> to get started</p>
+    <% end %>
+  </div>
 </div>
 
 <div class="selling-points">
@@ -21,7 +23,7 @@
       Follow your friends to keep up with the hottest games.
     </h3>
     </br>
-    <%= image_tag "collaboration.jpg", class: "selling-point" %>
+    <%= image_tag "collaboration.png", class: "selling-point" %>
   </div>
   <div class="point col-md-4">
     <h3>
