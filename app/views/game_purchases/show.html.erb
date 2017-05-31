@@ -1,0 +1,12 @@
+<div class="game-purchase-display">
+  <%= image_tag @game_purchase.game.img_url, class: 'col-md-2' %>
+  <p class='genre'><strong>Genre:</strong><%= @game_purchase.game.genre %></p>
+  <p class="game-description"><%= @game_purchase.game.description %></p>
+  <%= form_for @game_purchase, url: {action: "update"}, html: {class: "review col-md-8"}, method: "put" do |f| %>
+    <p><h3>Post a review for this game.</h3></p>
+    <%= f.text_area :review, class: 'review-area' %>
+    <%= f.label :rating %>
+    <%= f.select(:rating, ['-',0,1,2,3,4,5]) %>
+    <%= f.submit "Post Review", class: 'btn btn-success pull-right' %>
+  <% end %>
+</div>
