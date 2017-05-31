@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   root to: 'welcome#index'
-  resources :libraries
+  resources :libraries do
+    resources :game_purchases, only: [:show, :update]
+  end
   get 'users/new'
   get 'users/show'
   get 'users/edit'
