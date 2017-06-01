@@ -70,3 +70,19 @@
 body{
   background: gray url('/assets/background.jpg');
 }
+
+#error_explanation{
+  border: 2px solid red;
+  border-radius: 20px;
+  background-color: rgba(180, 150, 150, 0.4);
+  color: maroon;
+}
+
+#error_explanation h2{
+  font-size: 1.3em;
+  margin-left: 1em;
+}
+
+#error_explanation li{
+  list-style: decimal;
+}
