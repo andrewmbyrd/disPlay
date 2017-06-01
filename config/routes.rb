@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'users/new'
   get 'users/show'
   get 'users/edit'
-  get 'users/update'
+  put 'users/update'
   get 'users/destroy'
 
 
