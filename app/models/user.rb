@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates_uniqueness_of :username
+
   include Gravtastic
   gravtastic default: "retro", size: 180
   # Include default devise modules. Others available are:

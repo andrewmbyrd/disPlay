@@ -1,2 +1,32 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="col-md-4">
+  <h1>Edit Account Information</h1>
+  <%= form_for(@user, url: users_update_path, method: "put") do |f| %>
+
+    <div class="field">
+      <%=f.label :current_password %>*
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    Enter new username (leave blank if no change)
+    <div class="field">
+      <%= f.text_field :username, autofocus: true %>
+    </div>
+
+    Enter new password (leave blank if no change)
+    <div class="field">
+      <%= f.password_field :password_update, autocomplete: "off" %>
+    </div>
+
+    Confirm new password (leave blank if no change)
+    <div class="field">
+      <%= f.password_field :password_update_confirmation, autocomplete: "off" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+</div>

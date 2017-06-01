@@ -1,33 +1,32 @@
+<div class="library-control">
+  <%= link_to "Add Some Games", companies_path, class: "btn btn-success pull-right" %>
+  <%= form_for @library do |f| %>
+    <%= f.label :style %>
+    <%= f.select(:style, Library::STYLE) %>
+    <%= f.submit "OK" %>
+  <% end %>
 
-<%= form_for @library do |f| %>
-  <%= f.label :style %>
-  <%= f.select(:style, Library::STYLE) %>
-  <%= f.submit "OK" %>
-<% end %>
+</div>
 
 <% if @library.games.empty? && @library.systems.empty? %>
   <p> Looks like your library is empty! </p>
 <% else %>
   <% if @library.Games? %>
     <% @library.games.each do |game| %>
-      <div>
-        <%= link_to game.title, library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %>
+      <div class="col-sm-3 box-art">
+        <%= link_to (image_tag game.img_url, class: 'game-thumbnail'), library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %>
       </div>
     <% end %>
   <% else %>
     <% @library.systems.each do |system| %>
-      <div>
+      <div class="col-md-4">
         <%= system.name %>
         <ul>
           <% system.games.where(id: @library.games.pluck(:id)).each do |game| %>
-            <li><%= game.title %></li>
+            <li><%= link_to game.title, library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %></li>
           <% end %>
         </ul>
       </div>
     <% end %>
   <% end %>
 <% end %>
-
-<%= link_to "Add Some Games", companies_path, class: "btn btn-success" %>
-<%= link_to 'Edit', edit_library_path(@library) %> |
-<%= link_to 'Back', libraries_path %>
