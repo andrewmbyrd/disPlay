@@ -1,0 +1,13 @@
+<div class="system-purchase-display">
+  <%= image_tag @system_purchase.system.img_url, class: "system-image col-md-2" %>
+  <p class="system-description col-md-6"><%= @system_purchase.system.description %></p>
+  <div class="deletion-warning col-md-3 pull-right">
+    <p class="final-warning">
+      WARNING! If you delete this system, other users will not be able to see your games
+      for this system when the System view is you Library's display setting. You'll need
+      to add the system back in order to have those games appear.
+    </p>
+    <%= link_to "Remove the #{@system_purchase.system.name} from Your Library", library_system_purchase_path(@library, @system_purchase), method: :delete, class: 'btn btn-warning' %>
+  </div>
+
+</div>

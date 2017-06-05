@@ -31,3 +31,17 @@
   height: 50%;
   width: 55%;
 }
+
+.ownership-notice{
+  height: 4rem;
+  border: 1px solid blue;
+  border-radius: 5px;
+  background: rgba(130, 130, 250, 0.8);
+  vertical-align: middle;
+
+}
+
+.ownership-notice p{
+  padding: 1rem 5px;
+  color: white;
+}
