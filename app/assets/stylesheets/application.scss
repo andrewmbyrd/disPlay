@@ -24,6 +24,39 @@
 
 }
 
+.alert{
+  position: absolute;
+  top: 0;
+  z-index: 500;
+  width: 80%;
+  margin: 1em auto;
+  animation: disappear 0s ease-in 3s forwards;
+  -moz-animation: disappear 0s ease-in 3s forwards;
+  -webkit-animation: disappear 0s ease-in 3s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes disappear {
+  to{
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: none;
+  }
+
+}
+
+@-webkit-keyframes disappear {
+  to{
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: none;
+  }
+
+}
+
 .home {
   float: left;
   height: 100%;
