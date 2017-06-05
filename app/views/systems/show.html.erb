@@ -1,5 +1,11 @@
 <div class="system-info">
-  <%= link_to "Add the #{@system.name} to Your Library", system_system_purchases_path(@system), method: :post, class: 'btn btn-success pull-right' %>
+  <% if user_owns_system(@system) %>
+    <div class="pull-right ownership-notice">
+      <p>The <%= "#{@system.name}"%> is in your Library!</p>
+    </div>
+  <% else %>
+    <%= link_to "Add the #{@system.name} to Your Library", system_system_purchases_path(@system), method: :post, class: 'btn btn-success pull-right' %>
+  <% end %>
   <%= image_tag @system.img_url, class: "system-image" %>
   <p class="system-details"><%= @system.description %></p>
 </div>

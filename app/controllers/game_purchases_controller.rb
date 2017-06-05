@@ -12,7 +12,8 @@ class GamePurchasesController < ApplicationController
   end
 
   def show
-    @game_purchase = GamePurchase.find(params[:id])
+    @library = Library.find(params[:library_id])
+    @game_purchase = @library.game_purchases.where(id: params[:id])[0]
   end
 
   def update
@@ -24,6 +25,19 @@ class GamePurchasesController < ApplicationController
     if @game_purchase.save!
       flash[:notice] = "Review posted!"
       redirect_to library_game_purchase_path(@library.id, @game_purchase.id)
+    end
+  end
+
+  def destroy
+    @library = Library.find(params[:library_id])
+    @game_purchase = @library.game_purchases.where(id: params[:id])[0]
+
+    if @game_purchase.destroy
+      flash[:notice] = "#{@game_purchase.game.title} removed from your library"
+      redirect_to @library
+    else
+      flash.now[:alert] = "There was an error removing this game from your library"
+      render :show
     end
   end
 

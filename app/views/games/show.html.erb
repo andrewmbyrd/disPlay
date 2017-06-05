@@ -1,8 +1,14 @@
 
 <div class="game-display">
   <%= image_tag @game.img_url, class: 'col-md-2' %>
-  <% if current_user && current_user.library.systems.pluck(:system_id).index(@system.id.to_i) %>
-    <%= link_to "Add to Library", system_game_game_purchases_path(@system, @game), method: :post, class: 'btn btn-success pull-right' %>
+  <% if user_owns_system(@system) %>
+    <% if user_owns_game(@game) %>
+      <div class="pull-right ownership-notice">
+        <p><%= "#{@game.title}"%> is in your Library!</p>
+      </div>
+      <% else %>
+      <%= link_to "Add to Library", system_game_game_purchases_path(@system, @game), method: :post, class: 'btn btn-success pull-right' %>
+    <% end %>
   <% else %>
     <%= link_to "Add the #{@system.name} to your Library in order to add this game", @system, class: 'btn btn-success pull-down' %>
   <% end %>
