@@ -1,12 +1,9 @@
 
-<h1 class="jumbotron"> Select a Company </h1>
-<div class="container-fluid">
-  <div class="row">
-    <% @companies.each do |company| %>
-      <div class="col-md-4">
-        <h2 class="company-name"> <%= link_to company.name, company %></h2>
-      </div>
+<h1 class="main-content"> Select a Company </h1>
 
-    <% end %>
+<% @companies.each do |company| %>
+  <div class="col-md-4 company-logo">
+    <%= link_to (image_tag logo_hash[company.name], class: 'logo'), company %>
   </div>
-</div>
+
+<% end %>
