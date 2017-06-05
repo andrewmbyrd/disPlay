@@ -1,5 +1,6 @@
 class LibrariesController < ApplicationController
   before_action :set_library, only: [:show, :edit, :update, :destroy]
+  before_action :require_sign_in
 
   # GET /libraries
   # GET /libraries.json

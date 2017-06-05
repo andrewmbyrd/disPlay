@@ -1,4 +1,5 @@
 class SystemPurchasesController < ApplicationController
+  before_action :require_sign_in
 
   def show
     @library = Library.find(params[:library_id])

@@ -1,4 +1,5 @@
 class GamePurchasesController < ApplicationController
+  before_action :require_sign_in
 
   def create
     @system = System.find(params[:system_id])

@@ -1,5 +1,5 @@
 class SystemsController < ApplicationController
-
+  before_action :require_sign_in
   def index
     @systems = System.all
   end
@@ -8,5 +8,5 @@ class SystemsController < ApplicationController
     @system = System.find(params[:id])
   end
 
-  
+
 end
