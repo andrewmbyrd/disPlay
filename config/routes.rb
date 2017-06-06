@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
   resources :libraries do
-    resources :game_purchases, only: [:show, :update, :destroy]
+    resources :game_purchases, only: [:show, :update, :destroy] do
+      member do
+        resources :comments, only: [:create]
+      end
+    end
     resources :system_purchases, only: [:show, :destroy]
   end
 
@@ -15,7 +19,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   get 'welcome/index'
   get 'welcome/contact'
-
 
   resources :welcome
   resources :systems do

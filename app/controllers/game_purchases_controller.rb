@@ -19,6 +19,7 @@ class GamePurchasesController < ApplicationController
   def show
     @library = Library.find(params[:library_id])
     @game_purchase = @library.game_purchases.where(id: params[:id])[0]
+    @comment = Comment.new
   end
 
   def update

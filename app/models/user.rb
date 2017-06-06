@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   has_one :library
   has_many :events
+  has_many :comments
 
   after_create :make_library
 
