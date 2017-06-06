@@ -3,7 +3,7 @@
 </div>
 
 <div class="col-md-3 my-followings">
-  <h3>People you follow:</h3>
+  <h3>Favorite people you follow:</h3>
   <% current_user.following.all.each do |user| %>
     <div class="following">
       <%= image_tag user.gravatar_url, size: 30 %>
@@ -43,7 +43,11 @@
     <p class="event-summary">
       <%= link_to event.user.username, library_path(event.user.library.id)%>
       <%= event.action %>
-      <%= link_to event.game_purchase.game.title, library_game_purchase_path(event.user.library.id, event.game_purchase.id) %>
+      <% unless event.commentee %>
+        <%= link_to event.game_purchase.game.title, library_game_purchase_path(event.user.library.id, event.game_purchase.id) %>
+      <% else %>
+        <%= link_to event.game_purchase.game.title, library_game_purchase_path(User.find(event.commentee).library.id, event.game_purchase.id) %>
+      <% end %>
     </p>
   <% end %>
 </div>

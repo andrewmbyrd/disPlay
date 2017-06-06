@@ -11,3 +11,22 @@
     <%= f.submit "Post Review", class: 'btn btn-success pull-right' %>
   <% end %>
 </div>
+
+<div class="comment-section col-md-6">
+  <% @game_purchase.comments.each do |comment| %>
+    <div class="comment <%= cycle("odd", "even") %>">
+      <div class="commenter">
+        <%= image_tag comment.user.gravatar_url, size: 30 %>
+        <%= link_to comment.user.username, library_path(comment.user.library.id) %>
+      </div>
+      <%= comment.body %>
+      <div class="comment-time">
+        <%= comment.created_at.strftime("%m/%d %l:%m") %>
+      </div>
+    </div>
+  <% end %>
+  <%= form_for @comment, url: library_comments_path do |f| %>
+    <%= f.text_area :body, placeholder: "Leave a comment..." %>
+    <%= f.submit "Leave Comment", class: 'btn btn-success pull-right' %>
+  <% end %>
+</div>

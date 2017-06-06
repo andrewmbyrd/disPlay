@@ -17,3 +17,32 @@
 .game-description{
   margin-right: 5em;
 }
+
+.comment-section{
+  margin-top: 10rem;
+  margin-left: 37rem;
+}
+.comment {
+  min-height: 5rem;
+  border: 1px solid blue;
+  position: relative;
+}
+
+.odd{
+  background-color: rgba(200,200,222,0.6);
+}
+
+.even{
+  background-color: rgba(250,250,250,0.8);
+}
+
+.comment-time{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#comment_body{
+  width: 100%;
+  margin-top: 2rem;
+}
