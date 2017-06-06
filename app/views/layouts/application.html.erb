@@ -25,10 +25,10 @@
     <div class="nav">
       <p class="home"><%= link_to (image_tag 'logo.png', class: 'nav-home'), root_path %></p>
       <p class="nav-games"><%= link_to "Browse Games", companies_path %></p>
-      <p class="nav-social"><%= link_to "Social", users_path %></p>
+      <p class="nav-social"><%= link_to "Social", users_index_path %></p>
       <% if controller_name != 'sessions' && controller_name != 'registrations' %>
         <% if user_signed_in? %>
-          <p class='sign-in-status pull-right'>Signed in as: <strong><%= link_to current_user.username, user_path(current_user.id) %></strong> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'%></p>
+          <p class='sign-in-status pull-right'>Signed in as: <strong><%= link_to current_user.username, users_show_path %></strong> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'%></p>
         <% else %>
           <div class="sign-up-status pull-right">
             <%= form_for(:user, url: user_session_path) do |f|%>

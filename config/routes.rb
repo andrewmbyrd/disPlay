@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     resources :system_purchases, only: [:show, :destroy]
   end
 
-  resources :users
+  get 'users/show'
+  get 'users/index'
+  get 'users/edit'
+  put 'users/update'
+  delete 'users/destroy'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
   get 'welcome/index'

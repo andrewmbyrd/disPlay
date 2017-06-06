@@ -17,6 +17,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :library
+  has_many :events
 
   after_create :make_library
 

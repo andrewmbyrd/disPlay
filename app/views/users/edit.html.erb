@@ -1,6 +1,6 @@
 <div class="col-md-4">
   <h1>Edit Account Information</h1>
-  <%= form_for(@user, url: user_path, method: "put") do |f| %>
+  <%= form_for(@user, url: users_update_path, method: "put") do |f| %>
 
     <div class="field">
       <%=f.label :current_password %>*

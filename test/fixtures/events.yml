@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  action: MyString
+  game_purchase: one
+
+two:
+  user: two
+  action: MyString
+  game_purchase: two

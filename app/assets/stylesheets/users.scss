@@ -15,3 +15,55 @@
 li{
   list-style: none;
 }
+
+.popular-user{
+  min-height: 4rem;
+}
+
+.popular-user p{
+  width: 60%;
+  float: left;
+  padding-top: 0.8rem;
+}
+
+.popular-user img{
+  float: left;
+  margin-right: 0.5em;
+}
+
+.my-followings{
+  border: 1px solid darkblue;
+  margin: 1rem 1rem;
+  background-color: rgba(200,200,222,0.6);
+}
+.my-followings h3{
+  text-decoration: underline;
+}
+
+.following{
+  min-height: 5rem;
+}
+
+.following p{
+  width: 60%;
+  float: left;
+  margin: 0;
+  padding-top: 0.8rem;
+}
+
+.following img{
+  float: left;
+  margin-right: 0.5em;
+}
+
+.events{
+  border: 1px solid darkblue;
+  margin: 1rem 1rem;
+  background-color: rgba(200,200,222,0.6);
+}
+
+.socialize{
+  border: 1px solid darkblue;
+  margin: 1rem 1rem;
+  background-color: rgba(200,200,222,0.6);
+}
