@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531152620) do
+ActiveRecord::Schema.define(version: 20170606192046) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "action"
+    t.integer  "game_purchase_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["game_purchase_id"], name: "index_events_on_game_purchase_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "game_purchases", force: :cascade do |t|
@@ -56,6 +66,16 @@ ActiveRecord::Schema.define(version: 20170531152620) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_publications_on_company_id"
     t.index ["game_id"], name: "index_publications_on_game_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "follower_id"
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "releases", force: :cascade do |t|

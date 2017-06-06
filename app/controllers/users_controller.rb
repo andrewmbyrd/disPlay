@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @users = User.all
+    @events = Event.all
+  end
+
   def show
     @user = current_user
   end
@@ -37,7 +42,7 @@ class UsersController < ApplicationController
       end
         bypass_sign_in(@user)
         flash[:notice] = notice
-        redirect_to users_show_path
+        redirect_to users_edit_path
 
     end
   end

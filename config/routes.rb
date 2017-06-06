@@ -5,12 +5,12 @@ Rails.application.routes.draw do
     resources :game_purchases, only: [:show, :update, :destroy]
     resources :system_purchases, only: [:show, :destroy]
   end
-  get 'users/new'
+
   get 'users/show'
+  get 'users/index'
   get 'users/edit'
   put 'users/update'
-  get 'users/destroy'
-
+  delete 'users/destroy'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
   get 'welcome/index'
@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   end
 
   resources :companies, only: [:index, :show]
+  resources :relationships, only: [:create, :destroy]
 
 end

@@ -10,7 +10,7 @@
     <p> <%= link_to "Customize your games library", library_path(current_user.library.id) %></p>
     <p> <%= link_to "Edit Account Information", users_edit_path %></p>
     <p> <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'%></p>
-    <p> <%= link_to "Delete Account", users_destroy_path, class: 'kill-account' %> </p>
+    <p> <%= link_to "Delete Account", users_destroy_path, method: :delete, class: 'kill-account' %> </p>
   </div>
 
 </div>
