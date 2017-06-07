@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     new_password_confirm = params[:user][:password_update_confirmation]
     unless @user.valid_password?(auth_password)
       flash[:alert] = "Incorrect password"
-      redirect_to users_edit_path
+      redirect_to edit_user_path(@user)
     else
       if new_password == new_password_confirm && !new_password.empty?
         @user.password = new_password
@@ -45,12 +45,12 @@ class UsersController < ApplicationController
         @user.save!
       rescue ActiveRecord::RecordInvalid => e
         flash[:alert] = e.message
-        redirect_to users_edit_path
+        redirect_to edit_user_path(@user)
         return
       end
         bypass_sign_in(@user)
         flash[:notice] = notice
-        redirect_to users_edit_path
+        redirect_to edit_user_path(@user)
 
     end
   end

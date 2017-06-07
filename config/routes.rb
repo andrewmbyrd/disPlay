@@ -10,14 +10,11 @@ Rails.application.routes.draw do
     resources :system_purchases, only: [:show, :destroy]
   end
 
-  resources :users, only: [:show, :index]
-  get 'users/account'
-  get 'users/edit'
-  get 'users/social'
-  put 'users/update'
-  delete 'users/destroy'
-
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :users, except: [:new, :create, :destroy]
+  get 'account', to: 'users#account', as: 'users_account'
+  get 'social', to: 'users#social', as: 'users_social'
+  get 'warn', to: 'users#warn', as: 'users_warn'
+  devise_for :users #controllers: { registrations: 'users/registrations' }
   get 'welcome/index'
   get 'welcome/contact'
 
