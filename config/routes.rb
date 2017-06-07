@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   end
 
   get 'users/show'
+  get 'users/account'
   get 'users/index'
   get 'users/edit'
+  get 'users/social'
   put 'users/update'
   delete 'users/destroy'
 

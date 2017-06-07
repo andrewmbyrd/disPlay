@@ -21,7 +21,7 @@ li{
 }
 
 .popular-user p{
-  width: 60%;
+  max-width: 40%;
   float: left;
   padding-top: 0.8rem;
 }
@@ -42,10 +42,11 @@ li{
 
 .following{
   min-height: 5rem;
+  text-align: left;
 }
 
 .following p{
-  width: 60%;
+  max-width: 40%;
   float: left;
   margin: 0;
   padding-top: 0.8rem;
@@ -56,10 +57,15 @@ li{
   margin-right: 0.5em;
 }
 
+.suggested{
+  text-align: left;
+}
+
 .events{
   border: 1px solid darkblue;
   margin: 1rem 1rem;
   background-color: rgba(200,200,222,0.6);
+  text-align: left;
 }
 
 .event-summary{
@@ -71,4 +77,18 @@ li{
   border: 1px solid darkblue;
   margin: 1rem 1rem;
   background-color: rgba(200,200,222,0.6);
+}
+
+.user-container{
+  border: 1px solid darkblue;
+  background-color: rgba(200,200,222,0.6);
+  margin: 3rem auto;
+}
+
+.user-listing{
+
+}
+
+.user-listing p{
+  width: 100%;
 }
