@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     resources :system_purchases, only: [:show, :destroy]
   end
 
-  get 'users/show'
+  resources :users, only: [:show, :index]
   get 'users/account'
-  get 'users/index'
+  #get 'users/index'
   get 'users/edit'
   get 'users/social'
   put 'users/update'
