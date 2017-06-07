@@ -1,0 +1,16 @@
+<div class="col-md-4">
+  <h1> Welcome, <br/><%= current_user.username %> </h1>
+  <%= image_tag current_user.gravatar_url %>
+  <p> Change your profile picture with <a href="https://en.gravatar.com/" target="_blank">Gravatar</a></p>
+</div>
+
+<div class="col-md-2 account-actions">
+  <h2>Actions</h2>
+  <div class="options">
+    <p> <%= link_to "Customize your games library", library_path(current_user.library.id) %></p>
+    <p> <%= link_to "Edit Account Information", users_edit_path %></p>
+    <p> <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'%></p>
+    <p> <%= link_to "Delete Account", users_destroy_path, method: :delete, class: 'kill-account' %> </p>
+  </div>
+
+</div>
