@@ -1,7 +1,7 @@
 <div class="prof-pic">
   <%= image_tag @user.gravatar_url %>
-  <p>Following: <%=@user.following.length %></p>
-  <p>Followers: <%=@user.followers.length %></p>
+  <p>Following: <%=@user.active_relationships.length %></p>
+  <p>Followers: <%=@user.passive_relationships.length %></p>
 
   <%if @user != current_user %>
     <% if current_user.following?(@user) %>
