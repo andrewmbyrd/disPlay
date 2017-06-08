@@ -14,13 +14,32 @@
   height: 90%;
 }
 
+.submitted-review{
+  background: white;
+  border: 1px solid blue;
+  min-height: 20em !important;
+}
+
 .game-description{
   margin-right: 5em;
 }
 
-.comment-section{
-  margin-top: 10rem;
-  margin-left: 37rem;
+@media screen and (min-width: 1000px){
+  .comment-section{
+
+    margin-top: 10rem;
+    left: 19%;
+
+  }
+}
+
+@media screen and (max-width: 1000px){
+  .comment-section{
+
+    margin-top: 10rem;
+    left: 0%;
+
+  }
 }
 .comment {
   min-height: 5rem;

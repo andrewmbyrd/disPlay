@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'welcome#index'
-  resources :libraries do
+  resources :libraries, only: [:show, :edit, :update] do
     resources :game_purchases, only: [:show, :update, :destroy] do
       member do
         resources :comments, only: [:create]
