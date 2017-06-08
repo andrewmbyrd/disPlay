@@ -6,7 +6,16 @@
 }
 
 .options{
-  background: white;
+  border: 1px solid darkblue;
+  background-color: rgba(200,200,222,0.6);
+}
+
+.account-actions{
+  margin-top: 2em;
+}
+
+.options h2{
+  text-decoration: underline;
 }
 
 .options p:hover{
@@ -109,6 +118,10 @@ li{
   right: 10em;
 }
 
+.prof-info h2{
+  padding-left: 0.3em;
+}
+
 .prof-info h4{
   text-align: center;
   text-decoration: underline;
@@ -118,4 +131,5 @@ li{
   float: left;
   position: relative;
   right: 10em;
+  top: 2em;
 }

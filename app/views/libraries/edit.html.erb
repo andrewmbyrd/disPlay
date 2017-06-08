@@ -1,6 +1,52 @@
-<h1>Editing Library</h1>
 
-<%= render 'form', library: @library %>
+<div class="library-control">
+  <%= link_to "Add Some Games", companies_path, class: "btn btn-success pull-right" %>
+  <%= form_for @library do |f| %>
+    <%= f.label :style %>
+    <%= f.select(:style, Library::STYLE) %>
+    <%= f.submit "OK" %>
+  <% end %>
+</div>
 
-<%= link_to 'Show', @library %> |
-<%= link_to 'Back', libraries_path %>
+<div class="search">
+  <%= form_tag "/libraries/#{@library.id}/edit", method: :get do %>
+    <%= text_field_tag :q, params[:q], placeholder: "Search..." %>
+  <% end %>
+  <%= link_to "Clear Search", edit_library_path(@library.id), class: "btn btn-default clear-search" %>
+
+</div>
+
+<% if @found_games %>
+  <div class="found-games row">
+    <h4>Search Results</h4>
+    <% @found_games.each do |game| %>
+      <div class="found-game col-sm-2">
+        <p><%= link_to game.title, library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %></p>
+        <%= image_tag game.img_url, size: 40 %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @library.games.empty? && @library.systems.empty? %>
+  <p> Looks like your library is empty! </p>
+<% else %>
+  <% if @library.Games? %>
+    <% @library.games.each do |game| %>
+      <div class="col-sm-3 game-list">
+        <%= link_to game.title, library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %>
+      </div>
+    <% end %>
+  <% else %>
+    <% @library.systems.each do |system| %>
+      <div class="col-md-4">
+        <p class="system-sort"><%=link_to system.name, library_system_purchase_path(@library.id, @library.system_purchases.where(system_id: system.id)[0].id) %></p>
+        <ul>
+          <% system.games.where(id: @library.games.pluck(:id)).each do |game| %>
+            <li><%= link_to game.title, library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

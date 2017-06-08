@@ -1,65 +1,34 @@
 class LibrariesController < ApplicationController
-  before_action :set_library, only: [:show, :edit, :update, :destroy]
   before_action :require_sign_in
 
-  # GET /libraries
-  # GET /libraries.json
-  def index
-    @libraries = Library.all
-  end
 
   # GET /libraries/1
   # GET /libraries/1.json
   def show
-  end
-
-  # GET /libraries/new
-  def new
-    @library = Library.new
+    @library = Library.find(params[:id])
   end
 
   # GET /libraries/1/edit
   def edit
-  end
-
-  # POST /libraries
-  # POST /libraries.json
-  def create
-    @library = Library.new(library_params)
-
-    respond_to do |format|
-      if @library.save
-        format.html { redirect_to @library, notice: 'Library was successfully created.' }
-        format.json { render :show, status: :created, location: @library }
-      else
-        format.html { render :new }
-        format.json { render json: @library.errors, status: :unprocessable_entity }
+    @library = current_user.library
+    if params[:q] && !params[:q].blank?
+      found = @library.games.pluck(:title).select do |title|
+        title.include?(params[:q]) || title.downcase.include?(params[:q])
       end
+      @found_games = @library.games.where(title: found)
     end
   end
+
 
   # PATCH/PUT /libraries/1
   # PATCH/PUT /libraries/1.json
   def update
-    respond_to do |format|
-      if @library.update(library_params)
-        format.html { redirect_to @library, notice: 'Library was successfully updated.' }
-        format.json { render :show, status: :ok, location: @library }
-      else
-        format.html { render :edit }
-        format.json { render json: @library.errors, status: :unprocessable_entity }
-      end
-    end
+    @library = current_user.library
+    @library.update(library_params)
+    redirect_to edit_library_path(current_user.library.id)
   end
 
-  # DELETE /libraries/1
-  # DELETE /libraries/1.json
   def destroy
-    @library.destroy
-    respond_to do |format|
-      format.html { redirect_to libraries_url, notice: 'Library was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   def add_system(system)
@@ -67,13 +36,11 @@ class LibrariesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_library
-      @library = Library.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def library_params
       params.require(:library).permit(:style, :user_id)
     end
+
+
+
 end

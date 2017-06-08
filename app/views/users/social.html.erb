@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-2"></div>
-  
+
   <div class="col-md-7 events">
     <h3>Recent Activity</h3>
     <% @events.all.first(20).each do |event| %>
@@ -11,7 +11,7 @@
         <% unless event.commentee %>
           <%= link_to event.game_purchase.game.title, library_game_purchase_path(event.user.library.id, event.game_purchase.id) %>
         <% else %>
-          <%= link_to event.game_purchase.game.title, library_game_purchase_path(User.find(event.commentee).library.id, event.game_purchase.id) %>
+          <%= link_to "#{User.find(event.commentee).username}'s ", User.find(event.commentee)%> copy of <%= link_to event.game_purchase.game.title, library_game_purchase_path(User.find(event.commentee).library.id, event.game_purchase.id) %>
         <% end %>
       </p>
     <% end %>

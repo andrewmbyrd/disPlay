@@ -1,18 +1,31 @@
 <div class="game-purchase-display">
   <%= image_tag @game_purchase.game.img_url, class: 'col-md-2' %>
-  <%= link_to "Remove Game", library_game_purchase_path(@library, @game_purchase), method: :delete, class: 'btn btn-warning pull-right' %>
+  <% if @library.user == current_user %>
+    <%= link_to "Remove Game", library_game_purchase_path(@library, @game_purchase), method: :delete, class: 'btn btn-warning pull-right' %>
+  <% end %>
   <p class='genre'><strong>Genre:</strong><%= @game_purchase.game.genre %></p>
   <p class="game-description"><%= @game_purchase.game.description %></p>
-  <%= form_for @game_purchase, url: {action: "update"}, html: {class: "review col-md-6"}, method: "put" do |f| %>
-    <p><h3>Post a review for this game.</h3></p>
-    <%= f.text_area :review, class: 'review-area' %>
-    <%= f.label :rating %>
-    <%= f.select(:rating, ['-',0,1,2,3,4,5]) %>
-    <%= f.submit "Post Review", class: 'btn btn-success pull-right' %>
+  <% if @library.user == current_user %>
+    <%= form_for @game_purchase, url: {action: "update"}, html: {class: "review col-md-6"}, method: "put" do |f| %>
+      <%= f.text_area :review, class: 'review-area', placeholder: "Write a review for this game..." %>
+      <%= f.label :rating %>
+      <%= f.select(:rating, ['-',0,1,2,3,4,5]) %>
+      <%= f.submit "Post Review", class: 'btn btn-success pull-right' %>
+    <% end %>
+  <% else %>
+    <div class="submitted-review col-md-6">
+      <% if @game_purchase.review %>
+        <%= @game_purchase.review %>
+      <% else %>
+        <p><%=@library.user.username%> hasn't left a review yet. Leave a comment and tell them to!</p>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
+
 <div class="comment-section col-md-6">
+
   <% @game_purchase.comments.each do |comment| %>
     <div class="comment <%= cycle("odd", "even") %>">
       <div class="commenter">
@@ -25,6 +38,7 @@
       </div>
     </div>
   <% end %>
+
   <%= form_for @comment, url: library_comments_path do |f| %>
     <%= f.text_area :body, placeholder: "Leave a comment..." %>
     <%= f.submit "Leave Comment", class: 'btn btn-success pull-right' %>

@@ -5,9 +5,10 @@
 </div>
 
 <div class="col-md-2 account-actions">
-  <h2>Actions</h2>
   <div class="options">
-    <p> <%= link_to "Customize your games library", library_path(current_user.library.id) %></p>
+    <h2>Actions</h2>
+    <p> <%= link_to "View Your Profile Page", current_user%>
+    <p> <%= link_to "Customize your games library", edit_library_path(current_user.library.id) %></p>
     <p> <%= link_to "Edit Account Information", edit_user_path(@user) %></p>
     <p> <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'%></p>
     <p> <%= link_to "Delete Account", users_warn_path, class: 'kill-account' %> </p>

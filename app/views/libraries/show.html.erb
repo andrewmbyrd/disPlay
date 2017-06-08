@@ -1,32 +1,31 @@
-<div class="library-control">
-  <%= link_to "Add Some Games", companies_path, class: "btn btn-success pull-right" %>
-  <%= form_for @library do |f| %>
-    <%= f.label :style %>
-    <%= f.select(:style, Library::STYLE) %>
-    <%= f.submit "OK" %>
-  <% end %>
-
-</div>
 
 <% if @library.games.empty? && @library.systems.empty? %>
-  <p> Looks like your library is empty! </p>
+  <p> Looks like this library is empty! </p>
 <% else %>
-  <% if @library.Games? %>
-    <% @library.games.each do |game| %>
-      <div class="col-sm-3 box-art">
-        <%= link_to (image_tag game.img_url, class: 'game-thumbnail'), library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %>
-      </div>
-    <% end %>
-  <% else %>
+  <div class="system-nav-list">
+    <p>Jump to:</p>
     <% @library.systems.each do |system| %>
-      <div class="col-md-4">
-        <p class="system-sort"><%=link_to system.name, library_system_purchase_path(@library.id, @library.system_purchases.where(system_id: system.id)[0].id) %></p>
-        <ul>
-          <% system.games.where(id: @library.games.pluck(:id)).each do |game| %>
-            <li><%= link_to game.title, library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %></li>
-          <% end %>
-        </ul>
+      <div class="col-md-1">
+        <%= link_to system.name, library_path(@library.id)+"##{system.name}" %>
       </div>
     <% end %>
+  </div>
+  <% @library.systems.each do |system| %>
+    <h3 class="system-name" id="<%=system.name%>"><%=system.name%><%=image_tag system_logo_hash[system.name], size: 50 %></h3>
+    <div class="bookcase">
+      <% system.games.where(id: @library.games.pluck(:id)).each do |game| %>
+        <div class="col-md-3 shelf">
+          <%= link_to (image_tag game.img_url, class: 'showcase'), library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %></li>
+        </div>
+      <% end %>
+      <% unless system.games.where(id: @library.games.pluck(:id)).length%4 == 0 %>
+        <% (-1*((system.games.where(id: @library.games.pluck(:id)).length%4)-4)).times do |game| %>
+          <div class="col-md-3 shelf">
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
   <% end %>
+
 <% end %>
