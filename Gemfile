@@ -25,6 +25,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 #get user profile pictures from gravatar
 gem 'gravtastic'
+#allow for fuzzy searches
+gem 'fuzzy_match'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
