@@ -83,9 +83,16 @@ li{
 
 .events{
   border: 1px solid darkblue;
+  height: 85vh;
   margin: 1rem 1rem;
   background-color: rgba(200,200,222,0.6);
   text-align: left;
+  overflow: scroll;
+}
+
+.event{
+  height: 5rem;
+  width: 100%;
 }
 
 .event-summary{
