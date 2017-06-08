@@ -1,9 +1,9 @@
-<div class="row">
-  <div class="col-md-2"></div>
+<div class="col-md-2"></div>
 
-  <div class="col-md-7 events">
-    <h3>Recent Activity</h3>
-    <% @events.all.first(20).each do |event| %>
+<div class="col-md-7 events">
+  <h3>Recent Activity</h3>
+  <% @events.order(created_at: :desc).first(20).each do |event| %>
+    <div class="event">
       <%= image_tag event.user.gravatar_url, size: 30 %>
       <p class="event-summary">
         <%= link_to event.user.username, user_path(event.user.id)%>
@@ -14,40 +14,40 @@
           <%= link_to "#{User.find(event.commentee).username}'s ", User.find(event.commentee)%> copy of <%= link_to event.game_purchase.game.title, library_game_purchase_path(User.find(event.commentee).library.id, event.game_purchase.id) %>
         <% end %>
       </p>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
 
-  <div class="col-md-2 my-followings">
-    <h3>Favorite people you follow:</h3>
-    <% current_user.following.all.first(5).each do |user| %>
-      <div class="following">
-        <%= image_tag user.gravatar_url, size: 30 %>
-        <p><%= link_to user.username, user_path(user.id) %></p>
-        <%= form_for current_user.active_relationships.find_by(followed_id: user.id), method: :delete do |f| %>
-          <%= f.submit "Unfollow", class: "btn btn-danger pull-right" %>
-        <% end %>
-      </div>
-    <% end %>
-    <div class="suggested">
-      <h3>Popular Users</h3>
-      <% @users.all.first(5).each do |user| %>
-        <% if user != current_user %>
-          <div class="popular-user">
-            <%= image_tag user.gravatar_url, size: 30 %>
-            <p><%= link_to user.username, user_path(user.id) %></p>
-            <% if current_user.following?(user) %>
-              <%= form_for current_user.active_relationships.find_by(followed_id: user.id), method: :delete do |f| %>
-                <%= f.submit "Unfollow", class: "btn btn-danger pull-right" %>
-              <% end %>
-            <% else %>
-              <%= form_for(current_user.active_relationships.build) do |f| %>
-                <div><%= hidden_field_tag :followed_id, user.id %></div>
-                <%= f.submit "Follow", class: "btn btn-primary pull-right" %>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
+<div class="col-md-2 my-followings">
+  <h3>Most Active follows</h3>
+  <% current_user.following.all.first(5).each do |user| %>
+    <div class="following">
+      <%= image_tag user.gravatar_url, size: 30 %>
+      <p><%= link_to user.username, user_path(user.id) %></p>
+      <%= form_for current_user.active_relationships.find_by(followed_id: user.id), method: :delete do |f| %>
+        <%= f.submit "Unfollow", class: "btn btn-danger pull-right" %>
       <% end %>
     </div>
+  <% end %>
+  <div class="suggested">
+    <h3>Popular Users</h3>
+    <% @users.all.first(5).each do |user| %>
+      <% if user != current_user %>
+        <div class="popular-user">
+          <%= image_tag user.gravatar_url, size: 30 %>
+          <p><%= link_to user.username, user_path(user.id) %></p>
+          <% if current_user.following?(user) %>
+            <%= form_for current_user.active_relationships.find_by(followed_id: user.id), method: :delete do |f| %>
+              <%= f.submit "Unfollow", class: "btn btn-danger pull-right" %>
+            <% end %>
+          <% else %>
+            <%= form_for(current_user.active_relationships.build) do |f| %>
+              <div><%= hidden_field_tag :followed_id, user.id %></div>
+              <%= f.submit "Follow", class: "btn btn-primary pull-right" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

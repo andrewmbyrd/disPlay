@@ -32,7 +32,7 @@
   <p> Looks like your library is empty! </p>
 <% else %>
   <% if @library.Games? %>
-    <% @library.games.each do |game| %>
+    <% @library.games.order(:title).each do |game| %>
       <div class="col-sm-3 game-list">
         <%= link_to game.title, library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %>
       </div>
