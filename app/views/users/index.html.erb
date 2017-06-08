@@ -1,3 +1,11 @@
+<div class="search">
+  <%= form_tag '/users', method: :get do %>
+    <%= text_field_tag :q, params[:q], placeholder: "Search..." %>
+  <% end %>
+  <%= link_to "Clear Search", users_path, class: "btn btn-default clear-search" %>
+
+</div>
+
 <div class="user-container row">
   <h3>People you follow</h3>
   <% current_user.active_relationships.pluck(:followed_id).each do |id| %>
@@ -9,8 +17,12 @@
 </div>
 
 <div class="row user-container">
-  <h3>All Users</h3>
-  <% User.all.each do |user| %>
+  <% if @results %>
+    <h3>Searched Users</h3>
+  <% else %>
+    <h3>All Users</h3>
+  <% end %>
+  <% @users.each do |user| %>
   <div class="user-listing col-sm-1">
     <%= image_tag user.gravatar_url, size: 40 %>
     <%= link_to user.username, user %>

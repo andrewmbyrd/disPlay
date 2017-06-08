@@ -65,6 +65,7 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
+    fuzzy_match (2.1.0)
     giant-bomber (0.0.3)
       httparty (~> 0.13)
       json
@@ -184,6 +185,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  fuzzy_match
   giant-bomber (~> 0.0.3)
   gravtastic
   jbuilder (~> 2.5)

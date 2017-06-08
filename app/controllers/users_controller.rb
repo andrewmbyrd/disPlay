@@ -2,7 +2,18 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
+
+    if params[:q] && ! params[:q].blank?
+      potential = FuzzyMatch.new(User.all.pluck(:username)).find(params[:q])
+      if potential
+        @users = User.where(username: potential.split())
+        @results = true
+      else
+        flash.now[:notice] = "No users found by that name"
+      end
+    end
+    @users ||= User.all
+
   end
 
   def social
