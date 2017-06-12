@@ -31,4 +31,20 @@ module LibrariesHelper
      'TurboGrafx-16' => 'turbog.png'
     }
   end
+
+  def my_copy_of(game)
+    @library.game_purchases.where(game_id: game.id)[0]
+  end
+
+  def no_games?
+    @library.games.empty? && @library.systems.empty?
+  end
+
+  def my_system(system)
+    @library.system_purchases.where(system_id: system.id)[0]
+  end
+
+  def game_count_for(system)
+    system.games.where(id: @library.games.pluck(:id)).length
+  end
 end

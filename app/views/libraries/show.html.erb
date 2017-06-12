@@ -1,5 +1,5 @@
 
-<% if @library.games.empty? && @library.systems.empty? %>
+<% if no_games? %>
   <p> Looks like this library is empty! </p>
 <% else %>
   <div class="system-nav-list">
@@ -15,16 +15,10 @@
     <div class="bookcase">
       <% system.games.where(id: @library.games.pluck(:id)).each do |game| %>
         <div class="col-md-3 shelf">
-          <%= link_to (image_tag game.img_url, class: 'showcase'), library_game_purchase_path(@library.id, @library.game_purchases.where(game_id: game.id)[0].id) %></li>
+          <%= link_to (image_tag game.img_url, class: 'showcase'), library_game_purchase_path(@library.id, my_copy_of(game).id) %></li>
         </div>
       <% end %>
-      <% unless system.games.where(id: @library.games.pluck(:id)).length%4 == 0 %>
-        <% (-1*((system.games.where(id: @library.games.pluck(:id)).length%4)-4)).times do |game| %>
-          <div class="col-md-3 shelf">
-          </div>
-        <% end %>
-      <% end %>
-
+      <%= render partial: "shelves", locals: {system: system} %>
     </div>
   <% end %>
 

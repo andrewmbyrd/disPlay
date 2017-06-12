@@ -24,6 +24,8 @@
 
 }
 
+
+
 .alert{
   position: absolute;
   top: 0px;
@@ -90,6 +92,18 @@
 
 body{
   background: gray url('/assets/background.jpg');
+}
+
+@media screen and (max-width: 750px){
+  .nav{
+    height: 10em;
+  }
+
+  .nav-link{
+    height: 20%;
+  }
+
+  
 }
 
 #error_explanation{

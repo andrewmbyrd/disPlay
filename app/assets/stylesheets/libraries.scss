@@ -21,6 +21,7 @@
 
 .system-sort{
   border-bottom: 1px solid black;
+  font-weight: bold;
 }
 
 
@@ -31,11 +32,17 @@
   border-radius: 1rem;
   border: 1px solid black;
   background: white;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
-.found-games h4{
+.underline{
   text-decoration: underline;
   text-align: center;
+  width: 25%;
+  margin: 0 auto;
 }
 
 .bookcase{
@@ -59,6 +66,7 @@
   margin: 2rem auto;
   text-align: center;
 }
+
 
 .shelf{
   border-bottom: 15px solid brown;
