@@ -20,7 +20,18 @@
         <p><%=@library.user.username%> hasn't left a review yet. Leave a comment and tell them to!</p>
       <% end %>
     </div>
+
   <% end %>
+  <div class="review-score col-md-4">
+    <h3><%= @library.user.username%>'s Score</h3>
+    <% if @game_purchase.rating %>
+      <% @game_purchase.rating.times do %>
+        <%= image_tag "star.png", size: 80 %>
+      <% end %>
+    <% else %>
+      <p>No rating assigned yet!</p>
+    <% end %>
+  </div>
 </div>
 
 

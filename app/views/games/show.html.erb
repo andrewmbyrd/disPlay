@@ -12,6 +12,18 @@
   <% else %>
     <%= link_to "Add the #{@system.name} to your Library in order to add this game", @system, class: 'btn btn-success pull-down' %>
   <% end %>
-  <p class='genre'>Genre:<%= @game.genre %></p>
-  <p class="game-description"><%= @game.description %></p>
+  <div class="col-md-8">
+    <p class='genre'>Genre:<%= @game.genre %></p>
+    <p class="game-description"><%= @game.description %></p>
+    <div class="review-notice">
+      <h4>Average review score for this game by people you follow:</h4>
+      <% if avg_review_score(@game) %>
+        <% avg_review_score(@game).times do%>
+          <%=image_tag "star.png" %>
+        <% end %>
+      <% else %>
+        <p> None of the people you follow have rated this game!</p>
+      <% end %>
+    </div>
+  </div>
 </div>
