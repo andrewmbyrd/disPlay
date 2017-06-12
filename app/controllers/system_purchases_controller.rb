@@ -1,5 +1,6 @@
 class SystemPurchasesController < ApplicationController
   before_action :require_sign_in
+  before_action :verify_user, only: [:destroy]
 
   def show
     @library = Library.find(params[:library_id])
@@ -26,6 +27,15 @@ class SystemPurchasesController < ApplicationController
       render :show
     end
 
+  end
+
+  private
+  def verify_user
+    @library = Library.find(params[:library_id])
+    unless current_user == @library.user
+      flash[:alert] = "Hey don't try to edit other people's libraries!"
+      redirect_to current_user
+    end
   end
 
 end
