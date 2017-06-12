@@ -1,10 +1,10 @@
-<div class="col-md-2">
+<div class="section close-account">
   <h1>Cancel Account</h1>
   <p>
     Are you absolutely sure you need to leave? We'd love to have
     you stick around and game with us. But if you have to go, it's
     been a pleasure!
  </p>
- <%= link_to "Back to your Library", library_path(current_user.library.id), class: 'btn btn-success pull-left' %>
- <%= link_to "Cancel Account", user_registration_path, method: :delete, class: 'btn btn-danger pull-right' %>
+ <%= link_to "Back to your Library", library_path(current_user.library.id), class: 'btn btn-success' %>
+ <%= link_to "Cancel Account", user_registration_path, method: :delete, class: 'btn btn-danger' %>
 </div>

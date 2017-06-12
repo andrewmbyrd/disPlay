@@ -5,39 +5,20 @@
   color: red;
 }
 
-.options{
+.close-account{
+  padding: 1rem;
+  width: 40%;
+  margin: 0 auto;
+
+}
+
+.section{
   border: 1px solid darkblue;
-  background-color: rgba(200,200,222,0.6);
+  background-color: rgba(250,250,250,0.8);
 }
 
 .account-actions{
   margin-top: 2em;
-}
-
-.options h2{
-  text-decoration: underline;
-}
-
-.options p:hover{
-  cursor: pointer;
-}
-li{
-  list-style: none;
-}
-
-.popular-user{
-  min-height: 4rem;
-}
-
-.popular-user p{
-  max-width: 40%;
-  float: left;
-  padding-top: 0.8rem;
-}
-
-.popular-user img{
-  float: left;
-  margin-right: 0.5em;
 }
 
 .search{
@@ -51,41 +32,34 @@ li{
   margin-bottom: 1em;
 }
 
-.my-followings{
-  border: 1px solid darkblue;
+.highlighted-users{
   margin: 1rem 1rem;
-  background-color: rgba(200,200,222,0.6);
 }
-.my-followings h3{
+
+.highlighted-users h3{
   text-decoration: underline;
 }
 
-.following{
+.highlighted-user{
   min-height: 5rem;
   text-align: left;
 }
 
-.following p{
+.highlighted-user p{
   max-width: 40%;
   float: left;
-  margin: 0;
   padding-top: 0.8rem;
 }
 
-.following img{
+.highlighted-user img{
   float: left;
   margin-right: 0.5em;
 }
 
-.suggested{
-  text-align: left;
-}
 
 .events{
-  border: 1px solid darkblue;
-  height: 85vh;
+  height: 80vh;
   margin: 1rem 1rem;
-  background-color: rgba(200,200,222,0.6);
   text-align: left;
   overflow: scroll;
 }
@@ -93,6 +67,8 @@ li{
 .event{
   height: 5rem;
   width: 100%;
+  margin-bottom: 2px;
+
 }
 
 .event-summary{
@@ -100,20 +76,10 @@ li{
   border-width: 90%;
 }
 
-.socialize{
-  border: 1px solid darkblue;
-  margin: 1rem 1rem;
-  background-color: rgba(200,200,222,0.6);
-}
-
-.user-container{
-  border: 1px solid darkblue;
-  background-color: rgba(200,200,222,0.6);
-  margin: 3rem auto;
-}
-
-.user-listing{
-
+.event-summary-prof{
+  border-bottom: 1px solid black;
+  border-width: 90%;
+  height: 100%;
 }
 
 .user-listing p{
@@ -121,8 +87,7 @@ li{
 }
 
 .prof-info{
-  position: relative;
-  right: 10em;
+  text-align: left;
 }
 
 .prof-info h2{
@@ -132,11 +97,4 @@ li{
 .prof-info h4{
   text-align: center;
   text-decoration: underline;
-}
-
-.prof-pic{
-  float: left;
-  position: relative;
-  right: 10em;
-  top: 2em;
 }

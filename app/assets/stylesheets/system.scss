@@ -3,24 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .box-art{
-  height: 350px;
+  height: 30em;
   text-align: center;
 }
 
 .game-thumbnail{
-  width: auto;
+  width: 90%;
   height: 100%;
 }
 
 .system-info{
-  height: 300px;
+  height: 21em;
   margin: 10px 30px;
   position: relative;
+  text-align: left;
 
 }
 .system-image{
-  height: 100%;
-  width: auto;
+  height: 90%;
+  width: 30%;
 }
 
 .system-details{

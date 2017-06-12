@@ -1,19 +1,10 @@
-<div class="prof-pic">
+<div class="col-md-2">
   <%= image_tag @user.gravatar_url %>
-  <p>Following: <%=@user.active_relationships.length %></p>
-  <p>Followers: <%=@user.passive_relationships.length %></p>
+  <p>Following: <%= num_following %></p>
+  <p>Followers: <%= num_followers %></p>
 
   <%if @user != current_user %>
-    <% if current_user.following?(@user) %>
-      <%= form_for current_user.active_relationships.find_by(followed_id: @user.id), method: :delete do |f| %>
-        <%= f.submit "Unfollow", class: "btn btn-danger pull-left" %>
-      <% end %>
-    <% else %>
-      <%= form_for(current_user.active_relationships.build) do |f| %>
-        <div><%= hidden_field_tag :followed_id, @user.id %></div>
-        <%= f.submit "Follow", class: "btn btn-primary pull-left" %>
-      <% end %>
-    <% end %>
+    <%= render partial: "relationshipmod", locals: {user: @user} %>
   <% end %>
 </div>
 
@@ -21,17 +12,19 @@
 <div class="col-md-6 prof-info">
   <h2><%= link_to "Go to #{@user.username}'s Library", library_path(@user.library.id) %></h2>
   <h4>Recent Activity</h4>
-  <div class="events">
-    <% @user.events.first(10).each do |event| %>
-      <p class="event-summary">
-        <%= link_to event.user.username, library_path(event.user.library.id)%>
-        <%= event.action %>
-        <% unless event.commentee %>
-          <%= link_to event.game_purchase.game.title, library_game_purchase_path(event.user.library.id, event.game_purchase.id) %>
-        <% else %>
-          <%= link_to event.game_purchase.game.title, library_game_purchase_path(User.find(event.commentee).library.id, event.game_purchase.id) %>
-        <% end %>
-      </p>
+  <div class="section">
+    <% @user.events.order(created_at: :desc).first(10).each do |event| %>
+      <div class="event">
+        <p class="event-summary-prof">
+          <%= link_to event.user.username, user_path(event.user.id)%>
+          <%= event.action %>
+          <% unless event.commentee %>
+            <%= link_to event.game_purchase.game.title, library_game_purchase_path(event.user.library.id, event.game_purchase.id) %>
+          <% else %>
+            <%= link_to "#{User.find(event.commentee).username}'s ", User.find(event.commentee)%> copy of <%= link_to event.game_purchase.game.title, library_game_purchase_path(User.find(event.commentee).library.id, event.game_purchase.id) %>
+          <% end %>
+        </p>
+      </div>
     <% end %>
   </div>
 </div>

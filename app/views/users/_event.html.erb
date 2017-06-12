@@ -1,0 +1,9 @@
+<p class="event-summary">
+  <%= link_to event.user.username, user_path(event.user.id)%>
+  <%= event.action %>
+  <% unless event.commentee %>
+    <%= link_to event.game_purchase.game.title, library_game_purchase_path(event.user.library.id, event.game_purchase.id) %>
+  <% else %>
+    <%= link_to "#{User.find(event.commentee).username}'s ", User.find(event.commentee)%> copy of <%= link_to event.game_purchase.game.title, library_game_purchase_path(User.find(event.commentee).library.id, event.game_purchase.id) %>
+  <% end %>
+</p>

@@ -1,0 +1,4 @@
+<div class="user-listing col-sm-1">
+  <%= image_tag User.find(id).gravatar_url, size: 40 %>
+  <%= link_to User.find(id).username, User.find(id) %>
+</div>
