@@ -1,5 +1,6 @@
 class LibrariesController < ApplicationController
   before_action :require_sign_in
+  before_action :verify_user, only: [:edit, :update]
 
 
   # GET /libraries/1
@@ -10,7 +11,7 @@ class LibrariesController < ApplicationController
 
   # GET /libraries/1/edit
   def edit
-    @library = current_user.library
+    @library = Library.find(params[:id])
     if params[:q] && !params[:q].blank?
       found = @library.games.pluck(:title).select do |title|
         title.include?(params[:q]) || title.downcase.include?(params[:q])
@@ -28,17 +29,19 @@ class LibrariesController < ApplicationController
     redirect_to edit_library_path(current_user.library.id)
   end
 
-  def destroy
-  end
-
-  def add_system(system)
-    SystemPurchase.create!(library_id: current_user.library.id, system_id: system.id)
-  end
 
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def library_params
       params.require(:library).permit(:style, :user_id)
+    end
+
+    def verify_user
+      @library = Library.find(params[:id])
+      unless current_user == @library.user
+        flash[:alert] = "Hey don't try to edit other people's libraries!"
+        redirect_to current_user
+      end
     end
 
 

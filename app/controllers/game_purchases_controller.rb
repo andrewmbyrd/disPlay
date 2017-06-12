@@ -1,5 +1,6 @@
 class GamePurchasesController < ApplicationController
   before_action :require_sign_in
+  before_action :verify_user, only: [:update, :destroy]
 
   def create
     @system = System.find(params[:system_id])
@@ -50,6 +51,15 @@ class GamePurchasesController < ApplicationController
     else
       flash.now[:alert] = "There was an error removing this game from your library"
       render :show
+    end
+  end
+
+  private
+  def verify_user
+    @library = Library.find(params[:library_id])
+    unless current_user == @library.user
+      flash[:alert] = "Hey don't try to edit other people's libraries!"
+      redirect_to current_user
     end
   end
 
