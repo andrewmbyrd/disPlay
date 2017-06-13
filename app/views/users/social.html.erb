@@ -12,21 +12,23 @@
 
 <div class="col-md-2 section highlighted-users">
   <h3>Most Active follows</h3>
-  <% current_user.following.all.first(5).each do |user| %>
+  <% most_active_followings.each do |relation| %>
     <div class="highlighted-user">
-      <%= render partial: "followed", locals: {user: user} %>
+      <%= render partial: "followed", locals: {user: User.find(relation.id)} %>
     </div>
   <% end %>
   <div>
     <h3>Popular Users</h3>
-    <% @users.all.first(5).each do |user| %>
-      <% if user != current_user %>
-        <div class="highlighted-user">
-          <%= image_tag user.gravatar_url, size: 30 %>
-          <p><%= link_to user.username, user_path(user.id) %></p>
-          <%= render partial: "relationshipmod", locals: {user: user} %>
-        </div>
-      <% end %>
+    <% biggest_users.each do |relation| %>
+
+      <div class="highlighted-user">
+        <%= image_tag User.find(relation.id).gravatar_url, size: 30 %>
+        <p><%= link_to User.find(relation.id).username, user_path(User.find(relation.id)) %></p>
+        <% if User.find(relation.id) != current_user %>
+          <%= render partial: "relationshipmod", locals: {user: User.find(relation.id)} %>
+        <% end %>
+      </div>
+
     <% end %>
   </div>
 </div>
