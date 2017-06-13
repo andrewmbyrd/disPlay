@@ -127,21 +127,6 @@ def seedSystems
 
 end
 
-def seedNintendoNintendoEntertainmentSystem
-  Game.create!(title: "The Legend of Zelda",
-               genre: "adventure",
-               release_year: 1986,
-               description: "The best game ever")
-  Game.create!(title: "Mario Bros.",
-               genre: "platformer",
-               release_year: 1985,
-               description: "The best game ever")
-  Game.create!(title: "Donkey Kong",
-               genre: "action",
-               release_year: 1985,
-               description: "The best game ever")
-
-end
 
 def seedGames
   agent = Agent.new('a0eca223270ba503cc6a461e918c96322de5fcfc')

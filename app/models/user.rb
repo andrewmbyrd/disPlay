@@ -17,8 +17,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :library
-  has_many :events
-  has_many :comments
+  has_many :events, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   after_create :make_library
 

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'account', to: 'users#account', as: 'users_account'
   get 'social', to: 'users#social', as: 'users_social'
   get 'warn', to: 'users#warn', as: 'users_warn'
-  devise_for :users #controllers: { registrations: 'users/registrations' }
+  devise_for :user, controllers: { registrations: 'users/registrations' }
   get 'welcome/index'
   get 'welcome/contact'
 

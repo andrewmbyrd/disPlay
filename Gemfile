@@ -18,7 +18,7 @@ end
  end
 
 #use this to create seed video game data
-gem 'giant-bomber', '~> 0.0.3'
+gem 'giant-bomber', '~> 0.0.5'
 #use this to import the bootstrap css library
 gem 'bootstrap-sass'
 #handle user authentication

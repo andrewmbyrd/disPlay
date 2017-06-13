@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :require_sign_in, only: [:index, :social, :account, :show]
 
   def index
 
