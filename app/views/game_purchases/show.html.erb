@@ -2,7 +2,10 @@
   <%= image_tag @game_purchase.game.img_url, class: 'col-md-2' %>
   <% if @library.user == current_user %>
     <%= link_to "Remove Game", library_game_purchase_path(@library, @game_purchase), method: :delete, class: 'btn btn-warning pull-right' %>
+    </br>
+    </br>
   <% end %>
+  <%= link_to "Back to #{@library.user.username}'s Library", library_path(@library), class: 'btn btn-default pull-right' %>
   <p class='genre'><strong>Genre:</strong><%= @game_purchase.game.genre %></p>
   <p class="game-description"><%= @game_purchase.game.description %></p>
   <% if @library.user == current_user %>

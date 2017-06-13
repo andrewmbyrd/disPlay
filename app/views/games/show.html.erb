@@ -4,7 +4,7 @@
   <% if user_owns_system(@system) %>
     <% if user_owns_game(@game) %>
       <div class="pull-right ownership-notice">
-        <p><%= "#{@game.title}"%> is in your Library!</p>
+        <p><%=link_to "#{@game.title} is in your Library!", library_game_purchase_path(current_user.library.id, this_copy_of(@game).id)%></p>
       </div>
       <% else %>
       <%= link_to "Add to Library", system_game_game_purchases_path(@system, @game), method: :post, class: 'btn btn-success pull-right' %>

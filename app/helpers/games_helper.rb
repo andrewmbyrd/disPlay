@@ -13,5 +13,9 @@ module GamesHelper
     (score.is_a? BigDecimal) ? score.to_i : nil
   end
 
+  def this_copy_of(game)
+    current_user.library.game_purchases.find_by(game_id: game.id)
+  end
+
 
 end
