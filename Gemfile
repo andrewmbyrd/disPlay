@@ -19,6 +19,8 @@ end
 
 #use this to create seed video game data
 gem 'giant-bomber', '~> 0.0.5'
+#to hide my API key
+gem 'figaro'
 #use this to import the bootstrap css library
 gem 'bootstrap-sass'
 #handle user authentication
