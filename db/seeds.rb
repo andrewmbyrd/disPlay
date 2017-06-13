@@ -20,7 +20,7 @@ def seedCompanies
 end
 
 def seedSystems
-  agent = Agent.new('a0eca223270ba503cc6a461e918c96322de5fcfc')
+  agent = Agent.new(ENV["GIANT_API_KEY"])
   pid = agent.platform_id_hash
   pid2 = agent.platform_id_hash2
 
