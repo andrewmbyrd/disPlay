@@ -15,7 +15,7 @@
     <div class="bookcase">
       <% system.games.where(id: @library.games.pluck(:id)).each do |game| %>
         <div class="col-md-3 shelf">
-          <%= link_to (image_tag game.img_url, class: 'showcase'), library_game_purchase_path(@library.id, my_copy_of(game).id) %></li>
+          <%= link_to (image_tag game.img_url, class: 'showcase', lazy: true), library_game_purchase_path(@library.id, my_copy_of(game).id) %></li>
         </div>
       <% end %>
       <%= render partial: "shelves", locals: {system: system} %>

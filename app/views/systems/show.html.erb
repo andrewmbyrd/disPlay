@@ -11,6 +11,6 @@
 </div>
 <% @system.games.each do |game|%>
   <div class="col-md-4 box-art">
-    <%= link_to (image_tag game.img_url, class: 'game-thumbnail'), system_game_path(@system, game)%>
+    <%= link_to (image_tag game.img_url, class: 'game-thumbnail', lazy: true), system_game_path(@system, game)%>
   </div>
 <% end %>

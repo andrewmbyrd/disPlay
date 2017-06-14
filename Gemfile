@@ -17,6 +17,8 @@ end
    gem 'sqlite3'
  end
 
+#to make images load only when in the viewport
+gem 'lazyload-rails'
 #use this to create seed video game data
 gem 'giant-bomber', '~> 0.0.5'
 #to hide my API key
