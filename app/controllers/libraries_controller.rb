@@ -13,10 +13,8 @@ class LibrariesController < ApplicationController
   def edit
     @library = Library.find(params[:id])
     if params[:q] && !params[:q].blank?
-      found = @library.games.pluck(:title).select do |title|
-        title.include?(params[:q]) || title.downcase.include?(params[:q])
-      end
-      @found_games = @library.games.where(title: found)
+      search_string = params[:q].downcase
+      @found_games = @library.games.where('lower(title) LIKE ?', "%#{search_string}%")  
     end
   end
 

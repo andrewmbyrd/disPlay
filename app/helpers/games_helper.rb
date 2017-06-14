@@ -1,10 +1,10 @@
 module GamesHelper
   def user_owns_game(game)
-    current_user.library.games.pluck(:game_id).index(game.id)
+    !current_user.library.games.where(id: game.id).empty?
   end
 
   def user_owns_system(system)
-    current_user.library.systems.pluck(:system_id).index(system.id)
+    !current_user.library.systems.where(id: system.id).empty?
   end
 
   def avg_review_score(game)
