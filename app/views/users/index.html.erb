@@ -8,12 +8,12 @@
 
 <div class="section row">
   <h3>People you follow</h3>
-  <% current_user.active_relationships.pluck(:followed_id).each do |id| %>
-    <%= render partial: "userthumb", locals: {id: id} %>
+  <% people_it_follows.each do |relation| %>
+    <%= render partial: "userthumb", locals: {id: relation.followed_id} %>
   <% end %>
 </div>
 
-<div class="row section">
+<div class="section row">
   <% if @results %>
     <h3>Searched Users</h3>
   <% else %>

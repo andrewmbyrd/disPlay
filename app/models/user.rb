@@ -23,8 +23,9 @@ class User < ApplicationRecord
   after_create :make_library
 
   def following?(other_user)
-    active_relationships.pluck(:followed_id).include?(other_user.id)
+    !Relationship.where("follower_id = #{self.id} AND followed_id = #{other_user.id}").empty?
   end
+
 
   private
   def make_library

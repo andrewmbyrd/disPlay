@@ -42,7 +42,7 @@
       <div class="col-md-4">
         <p class="system-sort"><%=link_to system.name, library_system_purchase_path(@library.id, my_system(system).id) %></p>
         <ul>
-          <% system.games.where(id: @library.games.pluck(:id)).each do |game| %>
+          <% games_for(system).each do |game| %>
             <li><%= link_to game.title, library_game_purchase_path(@library.id, my_copy_of(game).id) %></li>
           <% end %>
         </ul>

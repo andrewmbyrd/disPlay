@@ -14,7 +14,7 @@
   <h3>Most Active follows</h3>
   <% most_active_followings.each do |relation| %>
     <div class="highlighted-user">
-      <%= render partial: "followed", locals: {user: User.find(relation.id)} %>
+      <%= render partial: "followed", locals: {user: User.find(relation.followed_id)} %>
     </div>
   <% end %>
   <div>

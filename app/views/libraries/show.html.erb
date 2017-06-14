@@ -10,10 +10,10 @@
       </div>
     <% end %>
   </div>
-  <% @library.systems.each do |system| %>
+  <% @library.systems.order(release_year: :desc).each do |system| %>
     <h3 class="system-name" id="<%=system.name%>"><%=system.name%><%=image_tag system_logo_hash[system.name], size: 50 %></h3>
     <div class="bookcase">
-      <% system.games.where(id: @library.games.pluck(:id)).each do |game| %>
+      <% games_for(system).each do |game| %>
         <div class="col-md-3 shelf">
           <%= link_to (image_tag game.img_url, class: 'showcase'), library_game_purchase_path(@library.id, my_copy_of(game).id) %></li>
         </div>

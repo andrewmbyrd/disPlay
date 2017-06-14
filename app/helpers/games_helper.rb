@@ -8,8 +8,11 @@ module GamesHelper
   end
 
   def avg_review_score(game)
-    score = GamePurchase.where(game_id: game.id, library_id: current_user.active_relationships.pluck(:followed_id))
-                .average(:rating)
+    score = Game.joins(:libraries)
+                .joins("INNER JOIN relationships on libraries.id = relationships.followed_id")
+                .where("game_purchases.game_id = #{game.id}")
+                .where("relationships.follower_id = #{current_user.id}")
+                .average("game_purchases.rating")
     (score.is_a? BigDecimal) ? score.to_i : nil
   end
 

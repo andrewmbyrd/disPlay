@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def index
 
     if params[:q] && ! params[:q].blank?
+      #pluck is necessary here for the FuzzyMatch
       potential = FuzzyMatch.new(User.all.pluck(:username)).find(params[:q])
       if potential
         @users = User.where(username: potential.split())

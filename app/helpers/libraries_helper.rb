@@ -44,7 +44,8 @@ module LibrariesHelper
     @library.system_purchases.where(system_id: system.id)[0]
   end
 
-  def game_count_for(system)
-    system.games.where(id: @library.games.pluck(:id)).length
+
+  def games_for(system)
+    Game.joins(:libraries, :systems).where("systems.id = #{system.id}").where("libraries.id= #{@library.user.id}")
   end
 end

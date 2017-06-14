@@ -1,5 +1,5 @@
-<% unless game_count_for(system) % 4 == 0 %>
-  <% (-1 * ((game_count_for(system) % 4 ) -4 )).times do |game| %>
+<% unless games_for(system).count % 4 == 0 %>
+  <% (-1 * ((games_for(system).count % 4 ) -4 )).times do |game| %>
     <div class="col-md-3 shelf"></div>
   <% end %>
 <% end %>
