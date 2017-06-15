@@ -31,7 +31,7 @@ def seedSystems
   playstation = agent.platform(pid["PlayStation"].to_i)
   System.create!(name: "PlayStation",
                  company: sony,
-                 release_year: playstation["release_date"],
+                 release_year: (playstation["release_date"]).to_i,
                  description: playstation["deck"],
                  img_url: playstation["image"]["small_url"])
   ps2 = agent.platform(pid["PlayStation 2"].to_i)
