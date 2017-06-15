@@ -10,13 +10,14 @@ end
 gem 'rails', '~> 5.0.1'
 group :production do
    gem 'pg'
+   gem 'rails_12factor'
 end
 
 
  group :development do
    gem 'sqlite3'
  end
-ruby '2.3.2'
+
 #use this to create seed video game data
 gem 'giant-bomber', '~> 0.0.5'
 #to hide my API key
