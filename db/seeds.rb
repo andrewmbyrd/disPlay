@@ -20,7 +20,7 @@ def seedCompanies
 end
 
 def seedSystems
-  agent = Agent.new(ENV["GIANT_API_KEY"])
+  agent = Agent.new('a0eca223270ba503cc6a461e918c96322de5fcfc')
   pid = agent.platform_id_hash
   pid2 = agent.platform_id_hash2
 
@@ -31,7 +31,7 @@ def seedSystems
   playstation = agent.platform(pid["PlayStation"].to_i)
   System.create!(name: "PlayStation",
                  company: sony,
-                 release_year: (playstation["release_date"]).to_i,
+                 release_year: playstation["release_date"].to_i,
                  description: playstation["deck"],
                  img_url: playstation["image"]["small_url"])
   ps2 = agent.platform(pid["PlayStation 2"].to_i)
