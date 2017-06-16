@@ -143,11 +143,12 @@ def seedGames
       temp_game = agent.game(game["id"])
       genres = temp_game["genres"]
       desired_genre = genres[0]["name"] if genres
+      image = game["image"] if game["image"]
       g = Game.create!(title: game["name"],
                    genre: desired_genre,
                    release_year: game["original_release_date"].to_i,
                    description: game["deck"],
-                   img_url: game["image"]["small_url"] if game["image"])
+                   img_url: image["small_url"])
       puts g
       Release.create!(system_id: system.id, game_id: g.id)
 
