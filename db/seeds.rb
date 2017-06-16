@@ -140,12 +140,14 @@ def seedGames
     games.each do |game|
       numGames += 1
       puts "#{game["name"]}"
-      g = Game.create!(title: game["name"],
-                   genre: agent.game(game["id"])["genres"][0]["name"],
-                   release_year: game["original_release_date"].to_i,
-                   description: game["deck"],
-                   img_url: game["image"]["small_url"])
-      Release.create!(system_id: system.id, game_id: g.id)
+      unless game["name"] = "Battle Chasers: Nightwar"
+        g = Game.create!(title: game["name"],
+                     genre: agent.game(game["id"])["genres"][0]["name"],
+                     release_year: game["original_release_date"].to_i,
+                     description: game["deck"],
+                     img_url: game["image"]["small_url"])
+        Release.create!(system_id: system.id, game_id: g.id)
+      end
     end
   end
 
