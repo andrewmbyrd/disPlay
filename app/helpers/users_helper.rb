@@ -16,11 +16,11 @@ module UsersHelper
   end
 
   def most_active_followings
-    Relationship.select("relationships.follower_id, relationships.followed_id, count(events.id) AS event_count")
+    Relationship.select("relationships.followed_id, count(events.id) AS event_count")
                 .where("relationships.follower_id = #{current_user.id}")
                 .joins("INNER JOIN users on relationships.followed_id = users.id")
                 .joins("INNER JOIN events on users.id = events.user_id")
-                .group("users.id")
+                .group("relationships.followed_id")
                 .order("event_count DESC")
                 .limit(5)
   end
